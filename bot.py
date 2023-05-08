@@ -27,11 +27,6 @@ def run_discord_bot():
     @client.event
     async def on_message(message):
         if (message.author.bot) or not (message.content.startswith('!') or message.content.startswith('?')):
-            print(str(message.channel.name) == "bot-commands")
-
-            print(isinstance(message.channel, discord.TextChannel))
-            print((message.author.bot))
-            print(message.content.startswith('!'))
             return
 
         username = str(message.author)
@@ -41,7 +36,6 @@ def run_discord_bot():
         print(f'{username} said: "{user_message}" ({channel})')
 
         if user_message[0] == '?':
-            user_message = user_message[1:]
             await send_message(message, user_message, is_private=True)
         else:
             await send_message(message, user_message, is_private=False)
